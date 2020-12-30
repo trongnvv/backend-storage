@@ -1,0 +1,55 @@
+{
+  "name": "fb-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/run",
+  "scripts": {
+    "start": "nodemon ./bin/run",
+    "dev": "cross-env NODE_ENV=development nodemon -e yaml,js,json",
+    "start:dev": "cross-env NODE_ENV=development nodemon ",
+    "start:stg": "cross-env NODE_ENV=staging node app",
+    "start:prod": "cross-env NODE_ENV=production node app",
+    "lint": "eslint . --ext .js -f ./.eslintformatter.js; exit 0",
+    "lint:fix": "eslint . --ext .js -f ./.eslintformatter.js --fix; exit 0",
+    "lint:staged": "lint-staged",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trongnvv/fb-backend.git"
+  },
+  "keywords": [],
+  "author": "trongnv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trongnvv/fb-backend/issues"
+  },
+  "homepage": "https://github.com/trongnvv/fb-backend#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "http-errors": "^1.8.0",
+    "http-status-codes": "^1.3.2",
+    "joi": "^17.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.20",
+    "log4js": "^6.3.0",
+    "mongoose": "^5.10.9",
+    "morgan": "^1.10.0",
+    "uuid": "^3.3.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit-msg": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "npm run lint:fix",
+      "git add"
+    ]
+  }
+}
