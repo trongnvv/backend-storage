@@ -2,10 +2,8 @@
 test/
 
 # Public folder
-public/audios/
-public/images/
-public/upload/
-public/contact/
+public
+static
 Dockerfile
 # Package-lock.json
 package-lock.json
