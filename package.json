@@ -1,5 +1,5 @@
 {
-  "name": "fb-backend",
+  "name": "backend_storage",
   "version": "1.0.0",
   "description": "",
   "main": "bin/run",
@@ -14,17 +14,9 @@
     "lint:staged": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/trongnvv/fb-backend.git"
-  },
   "keywords": [],
   "author": "trongnv",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/trongnvv/fb-backend/issues"
-  },
-  "homepage": "https://github.com/trongnvv/fb-backend#readme",
   "dependencies": {
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",

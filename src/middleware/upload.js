@@ -42,7 +42,7 @@ module.exports = (req, res, next) => {
     req.files = files;
     next();
   } catch (error) {
-    console.error('middleware upload error: ', error);
+    console.error('middleware upload error: ', error.message);
     res.status(400).json({ message: 'middleware upload error', errors: error });
   }
 };
