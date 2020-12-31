@@ -1,4 +1,3 @@
-const HttpStatus = require('http-status-codes');
 const mongoose = require('mongoose');
 const path = require('path');
 const HOST = process.env.HOST;
@@ -7,9 +6,7 @@ const { FileModel } = require('../models');
 module.exports = {
   uploadFiles: async (req, res, next) => {
     try {
-      let { files, user } = req;
-
-      console.log(files);
+      let { files } = req;
       const results = await Promise.all(
         files.map(async (f) => {
           let isImage = f.mimetype.split('/').includes('image');
@@ -28,18 +25,19 @@ module.exports = {
 
           const filePath = isImage
             ? path.join(__dirname, `../../public/images/${fileName}`)
-            : path.join(
-              __dirname,
-              `../static/${currentCompanyId}/${currentOrganizationId}/${fileName}`
-            );
+            : path.join(__dirname, `../../static/${fileName}`);
 
           f.mv(filePath, (err) => err && res.status(500).json(err));
 
           const _id = new mongoose.Types.ObjectId();
+          const fileUrl = isImage
+          ? `${HOST}/images/${fileName}`
+          : `${HOST}/api/v1/storage/download/${_id}`;
+
           return {
             _id,
             name: fileName,
-            url: `${HOST}/api/v1/storage/download/${_id}`,
+            url: fileUrl,
             path: filePath,
             originalFileName: f.name,
             size: f.size,

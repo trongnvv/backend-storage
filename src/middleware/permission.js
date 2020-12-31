@@ -1,5 +1,4 @@
 const createError = require('http-errors');
-const { FileModel } = require('../models');
 
 module.exports = async (req, res, next) => {
   try {
